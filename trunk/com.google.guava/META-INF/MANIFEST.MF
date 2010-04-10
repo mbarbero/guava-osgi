@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Guava
 Bundle-SymbolicName: com.google.guava
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 0.1.1.qualifier
 Bundle-ClassPath: guava-r03.jar
 Bundle-Vendor: Robert Konigsberg
 Export-Package: com.google.common.annotations,
