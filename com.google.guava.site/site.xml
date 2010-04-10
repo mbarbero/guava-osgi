@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+   <description name="Guava Libraries update site" url="http://guava-osgi.googlecode.com">
+      The Eclipse Update site for Guava Libraries.
+   </description>
    <feature url="features/com.google.guava.feature_0.0.3.jar" id="com.google.guava.feature" version="0.0.3">
       <category name="com.google.guava"/>
    </feature>
