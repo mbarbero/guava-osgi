@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/com.google.guava.feature_0.0.3.jar" id="com.google.guava.feature" version="0.0.3">
-      <category name="com.google.guava"/>
-   </feature>
-   <category-def name="com.google.guava" label="Guava"/>
-</site>
