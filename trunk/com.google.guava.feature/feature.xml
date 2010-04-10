@@ -2,7 +2,7 @@
 <feature
       id="com.google.guava.feature"
       label="Guava Libraries"
-      version="0.0.3"
+      version="0.0.0"
       provider-name="Robert Kongisberg">
 
    <description url="http://code.google.com/p/guava-libraries/">

@@ -3,7 +3,7 @@
    <description name="Guava Libraries update site" url="http://guava-osgi.googlecode.com">
       The Eclipse Update site for Guava Libraries.
    </description>
-   <feature url="features/com.google.guava.feature_0.0.3.jar" id="com.google.guava.feature" version="0.0.3">
+   <feature url="features/com.google.guava.feature_0.0.0.jar" id="com.google.guava.feature" version="0.0.0">
       <category name="com.google.guava"/>
    </feature>
    <category-def name="com.google.guava" label="Guava"/>
