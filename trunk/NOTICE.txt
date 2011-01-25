@@ -1,0 +1,9 @@
+   Google Guava OSGi bundle
+   Copyright 2010, 2011 Obeo
+
+   This product is a repackaging of software developed at
+   Google Inc. (http://www.google.org/).
+
+   This product includes tools developed at
+   The Eclipse Foundation (http://www.eclipse.org/).
+
