@@ -140,8 +140,8 @@ function buildRelease {
 	cp -Rf $UNZIP_FOLDER/bin/com $BUNDLE_TARGET_BUILD_PATH/com.google.guava/
 	cp -Rf $UNZIP_FOLDER/src/com $BUNDLE_TARGET_BUILD_PATH/com.google.guava.source/
 	cp -Rf $UNZIP_FOLDER/javadoc $BUNDLE_TARGET_BUILD_PATH/com.google.guava.source/
-	cp $UNZIP_FOLDER/COPYING $BUNDLE_TARGET_BUILD_PATH/com.google.guava.source/about_files
 	cp $UNZIP_FOLDER/README $BUNDLE_TARGET_BUILD_PATH/com.google.guava.source/about_files
+	cp $UNZIP_FOLDER/README $BUNDLE_TARGET_BUILD_PATH/com.google.guava/about_files
 
 	declare -a allExternalPackages
 	declare -a allInternalPackages
@@ -175,6 +175,8 @@ function buildRelease {
 	echo "" >> $MANIFEST
 
 	replace $BUNDLE_TARGET_BUILD_PATH/com.google.guava.source/META-INF/MANIFEST.MF "#VERSION#" $VERSION
+	replace $BUNDLE_TARGET_BUILD_PATH/com.google.guava.source/about.html "#VERSION#" $VERSION_RAW
+	replace $BUNDLE_TARGET_BUILD_PATH/com.google.guava/about.html "#VERSION#" $VERSION_RAW
 	replace $BUNDLE_TARGET_BUILD_PATH/com.google.guava.runtime.feature/feature.xml "#VERSION#" $VERSION
 	replace $BUNDLE_TARGET_BUILD_PATH/com.google.guava.runtime.feature/feature.xml "#RELEASE_TAG#" $RELEASE_TAG
 	replace $BUNDLE_TARGET_BUILD_PATH/com.google.guava.sdk.feature/feature.xml "#VERSION#" $VERSION
