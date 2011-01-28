@@ -91,6 +91,7 @@ function downloadLatestReleases {
 	sha1sum --status -c $SUMFILE 2> /dev/null
 	if [ $? -ne 0 ]; then
 		echo "Downloading all guava releases..."
+		rm -f $PREFIX_FOLDER/*
 		wget -U "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.215 Safari/534.10" -nv -P guava-releases -i guava-releases.list
 		echo "Checking downloaded files..."
 		sha1sum --quiet -c $SUMFILE
