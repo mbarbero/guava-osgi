@@ -191,6 +191,18 @@ function buildRelease {
 	cp -Rf $BUNDLE_TARGET_BUILD_PATH/com.google.guava.runtime.feature $BUILD_PATH/features/com.google.guava.runtime.feature_$VERSION
 	cp -Rf $BUNDLE_TARGET_BUILD_PATH/com.google.guava.sdk.feature $BUILD_PATH/features/com.google.guava.sdk.feature_$VERSION
 
+	cp templates/pom.xml $BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
+	replace $BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml "#VERSION#" $VERSION
+
+	gpg -ab $BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
+	gpg -ab $BUILD_PATH/plugins/com.google.guava_$VERSION.jar
+
+	mvn deploy:deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-snapshots -Dfile=$BUILD_PATH/plugins/com.google.guava_$VERSION.jar -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
+
+	mvn deploy:deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-snapshots -Dpackaging=pom.asc -Dfile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml.asc -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
+
+	mvn deploy:deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-snapshots -Dpackaging=jar.asc -Dfile=$BUILD_PATH/plugins/com.google.guava_$VERSION.jar.asc -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
+
 	rm -rf $BUNDLE_TARGET_BUILD_PATH
 
 	echo ""
