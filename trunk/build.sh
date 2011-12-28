@@ -117,9 +117,15 @@ function replace {
 #
 function buildRelease {
 	ZIP_FILE=$1
-	VERSION_RAW=`basename $1 | sed -e "s/guava-r\([0-9]*\).zip/\1/g"`
+	VERSION_RAW=`basename $1 | sed -e "s/guava-r\(.*\).zip/\1/g"`
 	VERSION_ZERO_TRIMMED=`echo $VERSION_RAW | sed -e "s/^0*//g"`
-	VERSION=$VERSION_ZERO_TRIMMED.0.0
+	VERSION=""
+	if [[ $VERSION_ZERO_TRIMMED =~ \. ]]
+	then
+		VERSION=$VERSION_ZERO_TRIMMED
+	else
+		VERSION=$VERSION_ZERO_TRIMMED.0.0
+	fi
 	RELEASE_TAG=release$VERSION_RAW
 	RELEASE_NAME=guava-r$VERSION_RAW
 	BUNDLE_TARGET_BUILD_PATH=/tmp/bundle_guava-r$VERSION_RAW
@@ -203,7 +209,7 @@ function buildRelease {
 
 	#mvn deploy:deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-snapshots -Dpackaging=jar.asc -Dfile=$BUILD_PATH/plugins/com.google.guava_$VERSION.jar.asc -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
 
-	rm -rf $BUNDLE_TARGET_BUILD_PATH
+	#rm -rf $BUNDLE_TARGET_BUILD_PATH
 
 	echo ""
 }
