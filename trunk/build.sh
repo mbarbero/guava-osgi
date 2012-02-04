@@ -132,7 +132,7 @@ function buildRelease {
 	UNZIP_FOLDER=/tmp/$RELEASE_NAME
 	BUILD_PATH=$2
 
-	echo -n "Building OSGi bundle of $RELEASE_NAME..."
+	echo "Building OSGi bundle of $RELEASE_NAME..."
 
 	rm -rf $BUNDLE_TARGET_BUILD_PATH
 	mkdir $BUNDLE_TARGET_BUILD_PATH
@@ -203,6 +203,12 @@ function buildRelease {
 	#gpg -ab $BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
 	#gpg -ab $BUILD_PATH/plugins/com.google.guava_$VERSION.jar
 
+	echo "Deploying binary to oss.sonatype.org maven repository..."
+	mvn gpg:sign-and-deploy-file -q -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2 -DrepositoryId=sonatype-nexus-staging -Dfile=$BUILD_PATH/plugins/com.google.guava_$VERSION.jar -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml -Dgpg.passphrase=""
+
+	echo "Deploying source to oss.sonatype.org maven repository..."
+	mvn gpg:sign-and-deploy-file -q -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-staging -Dfile=$BUILD_PATH/plugins/com.google.guava.source_$VERSION.jar -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml -Dgpg.passphrase="" -Dclassifier=sources
+
 	#mvn deploy:deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-snapshots -Dfile=$BUILD_PATH/plugins/com.google.guava_$VERSION.jar -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
 
 	#mvn deploy:deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-snapshots -Dpackaging=pom.asc -Dfile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml.asc -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
@@ -210,8 +216,6 @@ function buildRelease {
 	#mvn deploy:deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=sonatype-nexus-snapshots -Dpackaging=jar.asc -Dfile=$BUILD_PATH/plugins/com.google.guava_$VERSION.jar.asc -DpomFile=$BUNDLE_TARGET_BUILD_PATH/pom-$VERSION.xml
 
 	#rm -rf $BUNDLE_TARGET_BUILD_PATH
-
-	echo ""
 }
 
 ####################################################################

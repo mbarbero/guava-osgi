@@ -1,8 +1,9 @@
-http://guava-libraries.googlecode.com/files/guava-r03.zip
-http://guava-libraries.googlecode.com/files/guava-r04.zip
-http://guava-libraries.googlecode.com/files/guava-r05.zip
-http://guava-libraries.googlecode.com/files/guava-r06.zip
-http://guava-libraries.googlecode.com/files/guava-r07.zip
-http://guava-libraries.googlecode.com/files/guava-r08.zip
-http://guava-libraries.googlecode.com/files/guava-r09.zip
-http://guava-libraries.googlecode.com/files/guava-r10.zip
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/r03/guava-r03.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/r05/guava-r05.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/r06/guava-r06.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/r07/guava-r07.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/r08/guava-r08.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/r09/guava-r09.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/10.0/guava-10.0.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/10.0.1/guava-10.0.1.jar
+http://search.maven.org/remotecontent?filepath=com/google/guava/guava/11.0/guava-11.0.jar
